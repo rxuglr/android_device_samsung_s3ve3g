@@ -1,4 +1,4 @@
-DEVICE_TREE := device/samsung/s3ve3g
+DEVICE_PATH := device/samsung/s3ve3g
 
 # Bootloader
 BOARD_VENDOR := samsung
@@ -19,12 +19,12 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_CUSTOM_BOOTIMG_MK :=  $(DEVICE_TREE)/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK :=  $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_IMAGE_NAME := zImage
-BOARD_KERNEL_DT := $(DEVICE_TREE)/prebuilt/dt.img
+BOARD_KERNEL_DT := $(DEVICE_PATH)/prebuilt/dt.img
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom msm_rtb.filter=0x37
-TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
 BOARD_MKBOOTIMG_ARGS += --dt $(BOARD_KERNEL_DT)
 
 # File systems
@@ -43,12 +43,13 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_TREE)/system.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Recovery
 BOARD_NEEDS_LZMA_MINIGZIP := true
 
 # TWRP
+TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -62,7 +63,6 @@ TW_MTP_DEVICE := "/dev/mtp_usb"
 TW_NO_EXFAT_FUSE := true
 TW_NO_LEGACY_PROPS := true
 TW_NO_REBOOT_BOOTLOADER := true
-TW_THEME := portrait_hdpi
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
